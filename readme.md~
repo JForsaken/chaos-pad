@@ -1,0 +1,84 @@
+# Tutors Backend
+
+The backend RESTful API for the tutoring application, using NodeJS Express and PostgreSQL. The production server is hosted on Heroku.
+
+## Installation
+
+### Installing and running the backend application
+1. Fork it :fork_and_knife:!
+2. `cd` to the project folder
+3. Install NPM and NVM in order to run NodeJS
+4. Run `sudo npm install` to install all the node modules for the application.
+5. Navigate to **app/constants/database.js** and change the development constant to match your PostgreSQL connection string
+6. Run `sudo npm run dev` to run the server on localhost, which will be running on 'http://localhost:5000' and enjoy your dev :beer:
+
+### Installing on OSX 10.9
+1.	Install Homebrew. Paste this in terminal.
+	`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)`
+
+2.	Download Node.js
+	https://nodejs.org/en/download/
+
+3.	Install Postgres. In terminal, type:
+	`brew install postgres`
+
+	Run this command to finish creating the database
+	`initdb /usr/local/var/postgres`
+
+	To run the postgres server, type this command:
+	`pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
+
+	To check the listen_addresses and port in postgresql.conf:
+	`egrep 'listen|port' /usr/local/var/postgres/postgresql.conf`
+
+	Create a user if desired:
+	`createuser --pwprompt myUsername`
+
+	Create the database:
+	`createdb -OmyUserName -Eutf8 myDatabaseName`
+
+	Finally, to use the database, either download a GUI (such as Postico), or use this command to open a shell:
+	`psql -U myUsername -W myDatabaseName`
+
+4. Setup connection in your project's /app/constants/database.js :
+	'postgresql://myUsername:myPassword@localhost:5432/myDatabaseName';
+
+
+## Routes
+
+### Index
+
+Route | Action | Result
+------------ | ------------- | -------------
+/ | GET | Absolutely nothing
+
+### Tutors
+
+Route | Action | Result
+------------ | ------------- | -------------
+/tutors | GET | Gets all the tutors
+/tutors/{id} | GET | Gets the tutors with the matching id
+/tutors | POST | Creates a new tutor
+
+### GET Request Parameters
+
+Parameter | Action | Example
+------------ | ------------- | -------------
+order | Acts like a where clause | http://localhost:5000/route?order=column1,column2
+orderStyle | ASC or DESC | http://localhost:5000/route?orderStyle=ASC
+limit | Defines the number of results returned | http://localhost:5000/route?limit=5
+attributes | Specifies the columns returned | http://localhost:5000/route?attributes=column1,column2
+
+## Contributing
+
+1. Fork it :fork_and_knife:
+2. Clone it  :two_men_holding_hands: `git clone https://github.com/devname/tutors-backend.git`
+3. Create your feature branch: `git checkout -b my-new-feature`
+4. Commit your changes: `git commit -am 'Add some feature'`
+5. Push to the branch: `git push origin my-new-feature`
+6. Submit a pull request :muscle: :100:
+
+## Credits
+
+Justin D'Errico
+Laurent Ayoub
