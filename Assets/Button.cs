@@ -7,6 +7,10 @@ public class Button : MonoBehaviour {
 
 	void OnMouseDown()
 	{
+		AudioClip clip = Sound.clip;
+		AudioClip clipClone = (AudioClip)Instantiate (clip);
+
+		EventManager.instance.SoundButtonClicked (clipClone, Sound);
 		Sound.PlayOneShot(Sound.clip);
 	}
 }
